@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+
+.env
+
+.DS_Store
+
+# Terraform
+.terraform/
+*.tfplan
