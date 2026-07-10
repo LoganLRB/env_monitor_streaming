@@ -18,7 +18,12 @@ env_monitor_api
   - severity escalation           - sensor:current:{id}   (10-min TTL)
   - local: stdout                 - sensor:history:{id}   (15-min sorted set)
   - prod: SNS publish             - sensor:severity:{id}  (dedup key)
-                                  - pub/sub: sensor.live  (for dashboard SSE)
+                                  - pub/sub: sensor.live
+                                        |
+                                        v  env_monitor_dashboard (port 8001)
+                                  GET /v1/sensors/stream  (SSE to browser)
+                                  GET /v1/sensors          (current state)
+                                  GET /v1/zones            (zone summaries)
 ```
 
 Alert severity levels: `LOW` < `MODERATE` < `HIGH` < `CRITICAL`. An SNS alert fires only when a sensor's new reading exceeds its stored severity. De-escalation updates the stored severity without firing.
