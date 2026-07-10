@@ -36,7 +36,7 @@ async def main() -> None:
     await alert_consumer.start()
     await state_consumer.start()
     logger.info(
-        "Connected — Kafka: %s  Redis: %s",
+        "Connected. Kafka: %s  Redis: %s",
         settings.kafka_bootstrap_servers,
         settings.redis_url,
     )

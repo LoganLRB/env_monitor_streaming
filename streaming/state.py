@@ -8,7 +8,7 @@ from streaming.models import SensorReading
 
 logger = logging.getLogger(__name__)
 
-_CURRENT_TTL = 600    # 10 minutes — key expires if sensor goes silent
+_CURRENT_TTL = 600    # 10 minutes; key expires if sensor goes silent
 _WINDOW_SECONDS = 900  # 15-minute rolling history window
 
 

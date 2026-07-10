@@ -22,7 +22,7 @@ async def run(producer: AIOKafkaProducer) -> None:
             await _stream(url, producer)
             backoff = _INITIAL_BACKOFF
         except Exception as exc:
-            logger.warning("SSE stream lost: %s — reconnecting in %.0fs", exc, backoff)
+            logger.warning("SSE stream lost: %s; reconnecting in %.0fs", exc, backoff)
             await asyncio.sleep(backoff)
             backoff = min(backoff * 2, _MAX_BACKOFF)
 
